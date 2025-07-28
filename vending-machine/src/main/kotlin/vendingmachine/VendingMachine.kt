@@ -1,0 +1,3 @@
+package vendingmachine
+
+class VendingMachine

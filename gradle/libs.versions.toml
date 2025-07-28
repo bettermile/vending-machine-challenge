@@ -1,0 +1,23 @@
+[versions]
+hamkrest = "1.8.0.1"
+junit = "5.13.4"
+kotlin = "2.2.0"
+kotlinter = "5.1.1"
+mockito-core = "5.18.0"
+mockito-kotlin = "6.0.0"
+
+[libraries]
+hamkrest = { module = "com.natpryce:hamkrest", version.ref = "hamkrest" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+
+[bundles]
+mockito = ["mockito-core", "mockito-kotlin"]
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }

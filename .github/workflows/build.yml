@@ -1,0 +1,39 @@
+name: Build
+on:
+  push:
+    branches:
+      - 'main'
+    tags-ignore:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21.0.8'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Build
+        run: ./gradlew build --profile
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: artifacts
+          path: |
+            build/reports
+            **/build/reports
+            **/build/test-results
+      - name: Publish test results
+        uses: docker://ghcr.io/enricomi/publish-unit-test-result-action:v2
+        if: always()
+        with:
+          check_name: Test results
+          github_token: ${{ github.token }}
+          files: "**/build/test-results/**/TEST-*.xml"
