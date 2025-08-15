@@ -3,7 +3,7 @@ hamkrest = "1.8.0.1"
 junit = "5.13.4"
 kotlin = "2.2.0"
 kotlinter = "5.2.0"
-mockito-core = "5.18.0"
+mockito-core = "5.19.0"
 mockito-kotlin = "6.0.0"
 
 [libraries]
